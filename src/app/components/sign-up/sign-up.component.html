@@ -1,0 +1,62 @@
+<div class="container-fluid">
+
+    <div class="row d-flex align-items-center">
+
+        <div class="col-md-12 ">
+
+            <div class="row d-flex justify-content-center">
+                <div class="col-sm-6 shadow-lg p-3 mb-5 bg-body rounded cardLogin">
+                    <h1 class="text-center m-3">Cadastro</h1>
+
+                    <div class="form-group">
+                        <label for="name" class="mb-2">Nome</label>
+                        <input class="form-control mb-3" type="text" name="name" id="name"
+                            placeholder="Digite seu nome">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName" class="mb-2">Sobre nome</label>
+                        <input class="form-control mb-3" type="text" name="lastName" id="lastName"
+                            placeholder="Digite seu sobre nome">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cpf" class="mb-2">CPF</label>
+                        <input class="form-control mb-3" type="text" name="cpf" id="cpf" placeholder="Digite seu cpf">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthdate" class="mb-2">Nascimento</label>
+                        <input class="form-control mb-3" type="date" name="birthdate" id="birthdate">
+                    </div>
+
+                    <label for="gender" class="mb-2">Gênero</label>
+                    <select id="ngx-filter-ref1" class="form-control d-inline-block mb-3 width-250">
+                        <option value="SELECIONE" selected>Selecione</option>
+                        <option value="MALE">Masculino</option>
+                        <option value="FEMALE">Feminino</option>
+                    </select>
+
+                    <div class="form-group">
+                        <label for="email" class="mb-2">E-mail</label>
+                        <input class="form-control mb-3" type="text" name="email" id="email" placeholder="Digite seu e-mail">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="mb-2">Senha</label>
+                        <input class="form-control mb-3" type="password" name="password" id="password" placeholder="Digite sua senha">
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success" (click)='entrar()'>Entrar</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
