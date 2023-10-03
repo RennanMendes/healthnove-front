@@ -1,0 +1,39 @@
+<div class="container-fluid">
+
+    <div class="row d-flex align-items-center">
+
+        <div class="col-md-12 ">
+
+            <div class="row d-flex justify-content-center">
+                <div class="col-sm-4 shadow-lg p-3 mb-5 bg-body rounded cardLogin">
+                    <h1 class="text-center m-3">Entrar</h1>
+
+                    <div class="form-group">
+                        <label  for="usuario" class="mb-2">Usuário</label>
+                        <input  class="form-control mb-3" type="text" name="usuario" id="usuario" placeholder="Seu usuário">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="senha" class="mb-2">Senha</label>
+                        <input class="form-control mb-3" type="password" name="senha" id="senha" placeholder="Sua senha">
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success" (click)='entrar()'>Entrar</button>
+                    </div>
+
+                    <hr class="m-5">
+
+                    <p class="text-center">
+                        Não possui conta? <a routerLink="/cadastrar">Cadastre-se</a>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
