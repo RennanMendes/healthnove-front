@@ -39,7 +39,8 @@
                     </div>
 
                     <label for="gender" class="mb-2">Gênero</label>
-                    <select [(ngModel)]="userRequest.gender" id="ngx-filter-ref1" class="form-control d-inline-block mb-3 width-250">
+                    <select [(ngModel)]="userRequest.gender" id="ngx-filter-ref1"
+                        class="form-control d-inline-block mb-3 width-250">
                         <option value="SELECIONE" selected>Selecione</option>
                         <option value="MALE">Masculino</option>
                         <option value="FEMALE">Feminino</option>
@@ -53,14 +54,14 @@
 
                     <div class="form-group">
                         <label for="password" class="mb-2">Senha</label>
-                        <input (input)="confirmPassword($event)" class="form-control mb-3" type="password" name="password"
-                            id="password" placeholder="Digite sua senha">
+                        <input (input)="confirmPassword($event)" class="form-control mb-3" type="password"
+                            name="password" id="password" placeholder="Digite sua senha">
                     </div>
 
                     <div class="form-group">
                         <label for="confirmPassword" class="mb-2">Confirmar Senha</label>
-                        <input [(ngModel)]="userRequest.password" class="form-control mb-3" type="password" name="confirmPassword"
-                            id="confirmPassword" placeholder="Digite sua senha">
+                        <input [(ngModel)]="userRequest.password" class="form-control mb-3" type="password"
+                            name="confirmPassword" id="confirmPassword" placeholder="Digite sua senha">
                     </div>
 
                     <div class="d-flex justify-content-center">

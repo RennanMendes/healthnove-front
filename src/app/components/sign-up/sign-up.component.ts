@@ -25,7 +25,7 @@ export class SignUpComponent implements OnInit {
   signUp() {
     if (this.userRequest.password != this.password) {
       alert('A senhas não estão iguais!');
-    } else {      
+    } else {
       this.authService.signUp(this.userRequest).subscribe((resp: any) => {
         this.router.navigate(['/login']);
         alert("Usuário cadastrado com sucesso!")

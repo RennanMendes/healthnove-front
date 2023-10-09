@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserRequestDto } from '../components/dto/UserRequestDto';
-import {Observable} from 'rxjs'
+import { Observable } from 'rxjs'
 
 
 @Injectable({
@@ -13,12 +13,12 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  login(){
+  login() {
 
   }
 
-  signUp(userDto: UserRequestDto): Observable<UserRequestDto>{
-      return this.http.post<UserRequestDto>("http://localhost:8080/users",userDto)
+  signUp(userDto: UserRequestDto): Observable<UserRequestDto> {
+    return this.http.post<UserRequestDto>("http://localhost:8080/users", userDto)
   }
 
 
