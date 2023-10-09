@@ -26,6 +26,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="phone" class="mb-2">Telefone</label>
+                        <input class="form-control mb-3" type="text" name="phone" id="phone" placeholder="Digite seu telefone">
+                    </div>
+
+                    <div class="form-group">
                         <label for="birthdate" class="mb-2">Nascimento</label>
                         <input class="form-control mb-3" type="date" name="birthdate" id="birthdate">
                     </div>
@@ -39,16 +44,19 @@
 
                     <div class="form-group">
                         <label for="email" class="mb-2">E-mail</label>
-                        <input class="form-control mb-3" type="text" name="email" id="email" placeholder="Digite seu e-mail">
+                        <input class="form-control mb-3" type="text" name="email" id="email"
+                            placeholder="Digite seu e-mail">
                     </div>
 
                     <div class="form-group">
                         <label for="password" class="mb-2">Senha</label>
-                        <input class="form-control mb-3" type="password" name="password" id="password" placeholder="Digite sua senha">
+                        <input class="form-control mb-3" type="password" name="password" id="password"
+                            placeholder="Digite sua senha">
                     </div>
 
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-success" (click)='entrar()'>Entrar</button>
+                        <button type="submit" class="btn btn-danger me-4" (click)='cancel()'>Cancelar</button>
+                        <button type="submit" class="btn btn-success" (click)='entrar()'>Cadastrar</button>
                     </div>
 
                 </div>
