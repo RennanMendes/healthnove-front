@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  entrar() {
+  login() {
 
     if (this.loginForm.valid) {
 
