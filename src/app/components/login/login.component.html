@@ -4,23 +4,31 @@
 
         <div class="col-md-12 ">
 
-            <div class="row d-flex justify-content-center">
+            <div class="row mb-5 d-flex justify-content-center">
                 <div class="col-sm-4 shadow-lg p-3 mb-5 bg-body rounded cardLogin">
                     <h1 class="text-center m-3">Entrar</h1>
 
-                    <div class="form-group">
-                        <label for="usuario" class="mb-2">Usuário</label>
-                        <input class="form-control mb-3" type="text" name="usuario" id="usuario"
-                            placeholder="Seu usuário">
-                    </div>
+                    <form [formGroup]="loginForm">
+                        <div class="form-group">
+                            <label for="email" class="mb-2">Usuário</label>
+                            <input formControlName="email" class="form-control" type="text" name="email" id="email"
+                                placeholder="Seu o seu email">
+                            <small class="form-text text-danger "
+                                *ngIf="!loginForm.get('email')?.valid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">Digite
+                                um email válido!</small>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="senha" class="mb-2">Senha</label>
-                        <input class="form-control mb-3" type="password" name="senha" id="senha"
-                            placeholder="Sua senha">
-                    </div>
+                        <div class="form-group">
+                            <label for="password" class="mt-3">Senha</label>
+                            <input formControlName="password" class="form-control" type="password" name="password"
+                                id="password" placeholder="Sua senha">
+                                <small class="form-text text-danger "
+                                *ngIf="!loginForm.get('password')?.valid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">Senha obrigatoria</small>
+                        </div>
 
-                    <div class="d-flex justify-content-center">
+                    </form>
+
+                    <div class="d-flex justify-content-center mt-3">
                         <button type="submit" class="btn btn-success" (click)='entrar()'>Entrar</button>
                     </div>
 

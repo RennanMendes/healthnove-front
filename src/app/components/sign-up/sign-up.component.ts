@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { UserRequestDto } from '../dto/UserRequestDto';
-import { AuthService } from 'src/app/service/auth.service';
+import { UserRequestDto } from '../../core/types/User';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,7 +14,6 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -23,14 +21,14 @@ export class SignUpComponent implements OnInit {
   }
 
   signUp() {
-    if (this.userRequest.password != this.password) {
-      alert('A senhas não estão iguais!');
-    } else {
-      this.authService.signUp(this.userRequest).subscribe((resp: any) => {
-        this.router.navigate(['/login']);
-        alert("Usuário cadastrado com sucesso!")
-      })
-    }
+    // if (this.userRequest.password != this.password) {
+    //   alert('A senhas não estão iguais!');
+    // } else {
+    //   this.authService.signUp(this.userRequest).subscribe((resp: any) => {
+    //     this.router.navigate(['/login']);
+    //     alert("Usuário cadastrado com sucesso!")
+    //   })
+    // }
   }
 
   cancel() {
