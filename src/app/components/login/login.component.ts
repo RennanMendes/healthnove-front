@@ -44,8 +44,10 @@ export class LoginComponent implements OnInit {
 
       this.authService.login(this.loginDto).subscribe({
         next: (value) => {
-
-          console.log('Autenticado com sucesso', value)
+          const decodedToken = this.decodeToken(value.tokenJWT);
+          localStorage.setItem('token', value.tokenJWT);
+          localStorage.setItem('id', decodedToken.id);
+          console.log('Autenticado com sucesso', decodedToken)
           this.router.navigateByUrl('/')
           this.loginForm.reset();
           this.userInvalid = false
@@ -60,6 +62,20 @@ export class LoginComponent implements OnInit {
       })
     }
 
+  }
+
+  decodeToken(token: string): any {
+    const parts = token.split('.');
+    if (parts.length !== 3) {
+      throw new Error('Token inválido');
+    }
+    const payload = parts[1];
+    const base64Url = payload.replace(/-/g, '+').replace(/_/g, '/');
+    const base64 = decodeURIComponent(atob(base64Url).split('').map(function (c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(base64);
   }
 
 }
