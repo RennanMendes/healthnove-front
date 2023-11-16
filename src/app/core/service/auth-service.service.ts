@@ -20,12 +20,8 @@ export class AuthServiceService {
     return this.http.post<UserRequestDto>(`${this.baseUrl}/login`, loginDto)
   }
 
-  // signUp(userDto: UserRequestDto): Observable<UserRequestDto> {
-  //   return this.http.post<UserRequestDto>(`${this.baseUrl}/users`, userDto)
-  // }
-
-  // signIn(): Observable<UserRequestDto[]> {
-  //   return this.http.get<UserRequestDto[]>(`${this.baseUrl}/users`);
-  // }
+  signUp(userDto: UserRequestDto): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/users`, userDto)
+  }
 
 }

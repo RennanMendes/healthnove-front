@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
   loginDto: LoginDto
+  userInvalid: boolean = false
 
   constructor(
     private router: Router,
@@ -37,9 +38,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-
     if (this.loginForm.valid) {
-
       this.loginDto.email = this.loginForm.value.email;
       this.loginDto.password = this.loginForm.value.password;
 
@@ -49,15 +48,18 @@ export class LoginComponent implements OnInit {
           console.log('Autenticado com sucesso', value)
           this.router.navigateByUrl('/')
           this.loginForm.reset();
+          this.userInvalid = false
         },
         error: (err) => {
           if (err.status == 403) {
-            alert("Usuario ou senha incorreta!")
-          }else{
+            this.userInvalid = true
+          } else {
             console.log('Problema na autenticação', err)
           }
         },
       })
     }
+
   }
+
 }

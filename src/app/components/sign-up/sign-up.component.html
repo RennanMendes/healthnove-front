@@ -1,80 +1,93 @@
 <div class="container-fluid">
-
     <div class="row d-flex align-items-center">
-
         <div class="col-md-12 ">
-
             <div class="row d-flex justify-content-center">
-                <div class="col-sm-6 shadow-lg p-3 mt-4 mb-4 bg-body rounded cardLogin">
+                <form [formGroup]="form" class="col-sm-6 shadow-lg p-3 mt-4 mb-4 bg-body rounded cardLogin">
                     <h1 class="text-center m-3">Cadastro</h1>
 
                     <div class="form-group">
-                        <label for="name" class="mb-2">Nome</label>
-                        <input [(ngModel)]="userRequest.name" class="form-control mb-3" type="text" name="name"
-                            id="name" placeholder="Digite seu nome">
+                        <label for="name" class="mb-1 mt-3">Nome*</label>
+                        <input formControlName="name" class="form-control" type="text" name="name" id="name"
+                            placeholder="Digite seu nome">
+                        <small class="form-text text-danger "
+                            *ngIf="!form.get('name')?.valid && (form.get('name')?.dirty || form.get('name')?.touched)">Campo
+                            obrigatório!</small>
                     </div>
 
                     <div class="form-group">
-                        <label for="lastName" class="mb-2">Sobre nome</label>
-                        <input [(ngModel)]="userRequest.lastName" class="form-control mb-3" type="text" name="lastName"
-                            id="lastName" placeholder="Digite seu sobre nome">
+                        <label for="lastName" class="mb-1 mt-3">Sobre nome*</label>
+                        <input formControlName="lastName" class="form-control" type="text" name="lastName" id="lastName"
+                            placeholder="Digite seu sobre nome">
+                        <small class="form-text text-danger "
+                            *ngIf="!form.get('lastName')?.valid && (form.get('lastName')?.dirty || form.get('lastName')?.touched)">Campo
+                            obrigatório!</small>
                     </div>
 
                     <div class="form-group">
-                        <label for="cpf" class="mb-2">CPF</label>
-                        <input [(ngModel)]="userRequest.cpf" class="form-control mb-3" type="text" name="cpf" id="cpf"
-                            placeholder="Digite seu cpf">
+                        <label for="cpf" class="mb-1 mt-3">CPF*</label>
+                        <input formControlName="cpf" class="form-control" type="text" name="cpf" id="cpf" placeholder="Digite seu cpf">
+                        <small class="form-text text-danger "
+                            *ngIf="!form.get('cpf')?.valid && (form.get('cpf')?.dirty || form.get('cpf')?.touched)">Campo
+                            obrigatório!</small>
                     </div>
 
                     <div class="form-group">
-                        <label for="phone" class="mb-2">Telefone</label>
-                        <input [(ngModel)]="userRequest.phone" class="form-control mb-3" type="text" name="phone"
-                            id="phone" placeholder="Digite seu telefone">
+                        <label for="phone" class="mb-1 mt-3">Telefone*</label>
+                        <input formControlName="phone" class="form-control" type="text" name="phone" id="phone"
+                            placeholder="Digite seu telefone">
+                        <small class="form-text text-danger "
+                            *ngIf="!form.get('phone')?.valid && (form.get('phone')?.dirty || form.get('phone')?.touched)">Campo
+                            obrigatório!</small>
                     </div>
 
                     <div class="form-group">
-                        <label for="birthdate" class="mb-2">Nascimento</label>
-                        <input [(ngModel)]="userRequest.birthDate" class="form-control mb-3" type="date"
-                            name="birthdate" id="birthdate">
+                        <label for="birthDate" class="mb-1 mt-3">Nascimento*</label>
+                        <input formControlName="birthDate" class="form-control" type="date" name="birthDate" id="birthDate">
+                        <small class="form-text text-danger "
+                            *ngIf="!form.get('birthDate')?.valid && (form.get('birthDate')?.dirty || form.get('birthDate')?.touched)">Campo
+                            obrigatório!</small>
                     </div>
 
-                    <label for="gender" class="mb-2">Gênero</label>
-                    <select [(ngModel)]="userRequest.gender" id="ngx-filter-ref1"
-                        class="form-control d-inline-block mb-3 width-250">
-                        <option value="SELECIONE" selected>Selecione</option>
+                    <label for="gender" class="mb-1 mt-3">Gênero*</label>
+                    <select formControlName="gender" id="gender" class="form-control d-inline-block width-250">
+                        <option value="" disabled selected hidden>Selecione</option>
                         <option value="MALE">Masculino</option>
                         <option value="FEMALE">Feminino</option>
                     </select>
 
                     <div class="form-group">
-                        <label for="email" class="mb-2">E-mail</label>
-                        <input [(ngModel)]="userRequest.email" class="form-control mb-3" type="text" name="email"
-                            id="email" placeholder="Digite seu e-mail">
+                        <label for="email" class="mb-1 mt-3">E-mail*</label>
+                        <input formControlName="email" class="form-control" type="text" name="email" id="email" placeholder="Digite seu e-mail">
+                        <small class="form-text text-danger "
+                            *ngIf="!form.get('email')?.valid && (form.get('email')?.dirty || form.get('email')?.touched)">Campo
+                            obrigatório!</small>
                     </div>
 
                     <div class="form-group">
-                        <label for="password" class="mb-2">Senha</label>
-                        <input (input)="confirmPassword($event)" class="form-control mb-3" type="password"
-                            name="password" id="password" placeholder="Digite sua senha">
+                        <label for="password" class="mb-1 mt-3">Senha*</label>
+                        <input formControlName="password" (input)="confirmPassword($event)" class="form-control" type="password" name="password"
+                            id="password" placeholder="Digite sua senha">
+                        <small class="form-text text-danger "
+                            *ngIf="!form.get('password')?.valid && (form.get('password')?.dirty || form.get('password')?.touched)">Campo
+                            obrigatório!</small>
                     </div>
 
                     <div class="form-group">
-                        <label for="confirmPassword" class="mb-2">Confirmar Senha</label>
-                        <input [(ngModel)]="userRequest.password" class="form-control mb-3" type="password"
-                            name="confirmPassword" id="confirmPassword" placeholder="Digite sua senha">
+                        <label for="confirmPassword" class="mb-1 mt-3">Confirmar Senha*</label>
+                        <input formControlName="confirmPassword" class="form-control" type="password" name="confirmPassword" id="confirmPassword"
+                            placeholder="Digite sua senha">
+                        <small class="form-text text-danger "
+                            *ngIf="!form.get('confirmPassword')?.valid && (form.get('confirmPassword')?.dirty || form.get('confirmPassword')?.touched)">Campo
+                            obrigatório!</small>
                     </div>
 
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center mt-3">
                         <button type="submit" class="btn btn-danger me-4" (click)='cancel()'>Cancelar</button>
                         <button type="submit" class="btn btn-success" (click)='signUp()'>Cadastrar</button>
                     </div>
 
-                </div>
-
+                </form>
             </div>
-
         </div>
-
     </div>
-
 </div>
