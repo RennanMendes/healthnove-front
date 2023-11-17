@@ -50,7 +50,6 @@ export class SignUpComponent implements OnInit {
       } else {
         this.authService.signUp(this.userRequest).subscribe(
           (resp: any) => {
-            console.log(resp);
             alert("Usuário cadastrado com sucesso!");
             this.router.navigate(['/login']);
           },

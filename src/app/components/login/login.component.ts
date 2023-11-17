@@ -48,9 +48,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', value.tokenJWT);
           localStorage.setItem('id', decodedToken.id);
           console.log('Autenticado com sucesso', decodedToken)
-          this.router.navigateByUrl('/')
           this.loginForm.reset();
           this.userInvalid = false
+          this.router.navigate(['/scheduling']);
         },
         error: (err) => {
           if (err.status == 403) {
