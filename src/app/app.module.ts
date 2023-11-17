@@ -1,4 +1,5 @@
 import {HttpClientModule} from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -27,7 +28,7 @@ import { SchedulingComponent } from './components/scheduling/scheduling.componen
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
