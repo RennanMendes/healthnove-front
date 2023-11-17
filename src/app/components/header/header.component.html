@@ -16,7 +16,7 @@
                 </li>
             </ul>
 
-            <ul class="navbar-nav mb-auto d-flex align-items-center">
+            <ul *ngIf="isLoggedIn" class="navbar-nav mb-auto d-flex align-items-center">
                 <li class="nav-item dropdown p-3">
                     <a href="#" class="m-0 text-white fs-16">Agendamento</a>
                 </li>

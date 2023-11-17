@@ -23,8 +23,7 @@
                     }}
                     {{appointment.doctorDto.user.lastName }}</p>
 
-                <p class="d-flex justify-content-center">Data: {{ datePipe.transform(appointment.date, 'dd/MM/yyyy -
-                    HH:mm') }}</p>
+                <p class="d-flex justify-content-center">Data: {{ datePipe.transform(appointment.date, 'dd/MM/yyyy - HH:mm') }}</p>
                 <div class="d-flex">
                     <a style="margin-right: 10px;" class="btn btn-success">Remarcar</a>
                     <a style="margin: auto;" class="btn btn-danger" (click)="cancel(appointment.id)">Cancelar</a>

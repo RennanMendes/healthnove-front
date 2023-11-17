@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { SchedulingService } from 'src/app/core/service/scheduling.service';
@@ -22,7 +22,7 @@ export class SchedulingComponent implements OnInit {
 
   ngOnInit(): void {
     this.findSchedulingByUserId()
-  }
+      }
 
   findSchedulingByUserId() {
     this.schedulingService.findByUserId().subscribe(data => {

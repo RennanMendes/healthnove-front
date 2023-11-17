@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UserRequestDto } from '../../core/types/User';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthServiceService } from 'src/app/core/service/auth-service.service';
+import { UserService } from 'src/app/core/service/user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,7 +18,7 @@ export class SignUpComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private authService: AuthServiceService
+    private userService: UserService
   ) {
     this.userRequest = new UserRequestDto()
     this.userRequest.gender = '';
@@ -48,7 +48,7 @@ export class SignUpComponent implements OnInit {
       if (this.userRequest.password != this.form.get('confirmPassword')?.value) {
         alert('A senhas devem ser iguais!');
       } else {
-        this.authService.signUp(this.userRequest).subscribe(
+        this.userService.signUp(this.userRequest).subscribe(
           (resp: any) => {
             alert("Usuário cadastrado com sucesso!");
             this.router.navigate(['/login']);

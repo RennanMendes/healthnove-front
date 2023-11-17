@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginDto } from '../../core/types/Login';
-import { AuthServiceService } from 'src/app/core/service/auth-service.service';
+import { UserService } from 'src/app/core/service/user.service';
 
 export interface TokenJwt {
   token: string
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private authService: AuthServiceService
+    private userService: UserService
   ) {
     this.loginDto = new LoginDto();
 
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       this.loginDto.email = this.loginForm.value.email;
       this.loginDto.password = this.loginForm.value.password;
 
-      this.authService.login(this.loginDto).subscribe({
+      this.userService.login(this.loginDto).subscribe({
         next: (value) => {
           const decodedToken = this.decodeToken(value.tokenJWT);
           localStorage.setItem('token', value.tokenJWT);
