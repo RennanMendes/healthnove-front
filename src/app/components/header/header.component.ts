@@ -8,7 +8,7 @@ import { UserService } from 'src/app/core/service/user.service';
 })
 export class HeaderComponent implements OnInit {
 
-  public isLoggedIn: boolean
+  public isLoggedIn: boolean = false
   
   constructor(
     private userService: UserService
@@ -18,6 +18,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.isLoggedIn.subscribe(loggedIn => {
+      console.log("loggedIn "+loggedIn);
+      
       this.isLoggedIn = loggedIn;
     });
   }
