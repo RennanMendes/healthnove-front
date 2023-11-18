@@ -12,6 +12,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SchedulingComponent } from './components/scheduling/scheduling.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalSchedulingComponent } from './components/modal-scheduling/modal-scheduling.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FooterComponent,
     LoginComponent,
     SignUpComponent,
-    SchedulingComponent
+    SchedulingComponent,
+    ModalSchedulingComponent
   ],
   imports: [
     BrowserModule,

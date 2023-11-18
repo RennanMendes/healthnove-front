@@ -1,0 +1,71 @@
+<div class="modal-header backgrond">
+    <h5 class="m-0">Agendamento</h5>
+</div>
+
+<div class="modal-body taskboard-modal backgrond">
+    <div class="container">
+        <div class="form-row">
+
+            <form [formGroup]="form">
+                <div class="form-group">
+                    <label for="speciality" class="mb-1 mt-3 col-12">Especialidade*</label>
+                    <select (ngModelChange)="findBySpeciality($event)" formControlName="speciality" id="speciality"
+                        class="form-control d-inline-block width-250">
+                        <option value="" disabled selected hidden>Selecione</option>
+                        <option value="CARDIOLOGY">Cardiologia</option>
+                        <option value="MEDICAL_CLINIC">Clínica Médica</option>
+                        <option value="DERMATOLOGY">Dermatologia</option>
+                        <option value="GASTROENTEROLOGIST">Gastroenterologista </option>
+                        <option value="GYNECOLOGY">Ginecologia</option>
+                        <option value="PEDIATRICS">Pediatria</option>
+                        <option value="PNEUMOLOGY">Pneumologia </option>
+                    </select>
+
+                    <label for="doctor" class="mb-1 mt-3 col-12">Médico*</label>
+                    <select [attr.disabled]="specialityIsSelected ? '' : null" formControlName="doctor" id="doctor"
+                        class="form-control d-inline-block width-250">
+                        <option value="" disabled selected hidden>Escolha um médico disponível</option>
+                        <option *ngFor="let doctor of doctors" [value]="doctor.id">
+                            {{doctor.user.firstName}} {{doctor.user.lastName}}
+                        </option>
+                    </select>
+                    <small class="form-text text-danger "
+                        *ngIf="!form.get('doctor')?.valid && (form.get('doctor')?.dirty || form.get('doctor')?.touched)">Campo
+                        obrigatório!
+                    </small>
+
+                    <div class="d-flex col-12 justify-content-between">
+
+                        <div class="col-6">
+                            <label for="date" class="mb-1 mt-3">Data*</label>
+                            <input [attr.disabled]="specialityIsSelected ? '' : null" formControlName="date"
+                                class="form-control" type="date" name="date" id="date">
+                            <small class="form-text text-danger "
+                                *ngIf="!form.get('date')?.valid && (form.get('date')?.dirty || form.get('date')?.touched)">Campo
+                                obrigatório!</small>
+                        </div>
+
+                        <div class="col-5 ">
+                            <label for="time" class="mb-1 mt-3 col-6">Horario*</label>
+                            <input [attr.disabled]="specialityIsSelected ? '' : null" formControlName="time"
+                                class="form-control" type="time" name="time" id="time">
+                            <small class="form-text text-danger "
+                                *ngIf="!form.get('time')?.valid && (form.get('time')?.dirty || form.get('time')?.touched)">Campo
+                                obrigatório!</small>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="d-flex justify-content-end mt-3">
+                    <button type="submit" class="btn btn-secondary me-4"
+                        (click)="activeModal.dismiss('Cross click')">Fechar</button>
+                    <button type="submit" class="btn btn-primary" (click)="register()">Agendar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

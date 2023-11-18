@@ -27,6 +27,14 @@ export class SchedulingService {
     return this.http.get<any>(`${this.baseUrl}/appointments/user/${this.id}`, { headers: this.headers })
   }
 
+  findByDoctorSpeciality(speciality: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/doctors/specialties/${speciality}`, { headers: this.headers })
+  }
+
+  register(request: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/appointments`, request, { headers: this.headers })
+  }
+
   delete(userId: number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/appointments/${userId}`, { headers: this.headers })
   }
