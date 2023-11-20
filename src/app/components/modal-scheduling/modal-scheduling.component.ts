@@ -1,8 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { SchedulingService } from 'src/app/core/service/scheduling.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
+
+interface Appointment {
+  doctor: string;
+  speciality: string;
+  date: any;
+  time: any;
+}
 
 @Component({
   selector: 'app-modal-scheduling',
@@ -11,22 +18,37 @@ import Swal from 'sweetalert2';
 })
 export class ModalSchedulingComponent implements OnInit {
 
+  @Input()
+  id: number | null;
+
   form!: FormGroup;
   doctors: any[];
   specialityIsSelected: boolean = true
+  appointment: Appointment;
 
   constructor(
     public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
     private schedulingService: SchedulingService
-  ) { }
+  ) {
+    this.appointment = {
+      doctor: '',
+      speciality: '',
+      date: '',
+      time: ''
+    }
+  }
 
   ngOnInit(): void {
+    if (this.id !== null) {
+      this.findSchedulingById()
+    }
+
     this.form = this.formBuilder.group({
-      doctor: new FormControl('', Validators.required),
-      speciality: new FormControl('', Validators.required),
-      date: new FormControl('', Validators.required),
-      time: new FormControl('', Validators.required)
+      doctor: new FormControl(this.appointment.doctor, Validators.required),
+      speciality: new FormControl(this.appointment.speciality, Validators.required),
+      date: new FormControl(this.appointment.date, Validators.required),
+      time: new FormControl(this.appointment.time, Validators.required)
     });
   }
 
@@ -41,7 +63,7 @@ export class ModalSchedulingComponent implements OnInit {
     });
   }
 
-  register() {
+  save() {
     if (this.form.valid) {
       let date = this.form.get('date')?.value;
       let time = this.form.get('time')?.value;
@@ -58,11 +80,27 @@ export class ModalSchedulingComponent implements OnInit {
           this.activeModal.close();
         },
         (error) => {
-          this.alertError("Horário de funcionamento de segunda a sexta das 8h as 19h");
+          this.alertError(error.error);
         }
       );
 
     }
+  }
+
+  findSchedulingById() {
+    this.schedulingService.findSchedulingById(this.id).subscribe(data => {
+      let date = new Date(data.date);
+
+      this.appointment = {
+        doctor: data.doctorDto.id,
+        speciality: data.doctorDto.speciality,
+        date: date.toISOString().split('T')[0],
+        time: date.toISOString().split('T')[1].slice(0, 5)
+      }
+
+      this.form.patchValue(this.appointment);
+    });
+
   }
 
   alertSuccess(message: string) {
@@ -76,7 +114,7 @@ export class ModalSchedulingComponent implements OnInit {
 
   alertError(message: string) {
     Swal.fire({
-      title: `<h5>Erro:</h5>`,
+      title: '400',
       text: message,
       icon: 'error',
       confirmButtonColor: '#d33',

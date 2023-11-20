@@ -35,18 +35,32 @@ export class SchedulingComponent implements OnInit {
   }
 
   cancel(id: number) {
-    this.schedulingService.delete(id).subscribe(data => {
-      this.findSchedulingByUserId()
-      this.alertSuccess('Consulta cancelada com sucesso!')
-    }, error => {
-      this.alertError('Ocorreu um erro ao cancelar a consulta.')
-    }
-    );
+    Swal.fire({
+      title: 'ATENÇÃO!',
+      text: 'Deseja realmente cancelar esta consulta?',
+      showCancelButton: true,
+      confirmButtonText: 'SIM',
+      cancelButtonText: 'NÃO',
+      icon: 'warning'
+    }).then((result) => {
+      if (result.value) {
+        this.schedulingService.delete(id).subscribe(data => {
+          this.findSchedulingByUserId()
+          this.alertSuccess('Consulta cancelada com sucesso!')
+        }, error => {
+          this.alertError('Ocorreu um erro ao cancelar a consulta.')
+        }
+        );
+      }
+    })
+
   }
 
-  openModal() {
+  openModal(id: number | null) {
     const modalRef = this.modalService.open(ModalSchedulingComponent)
-    
+
+    modalRef.componentInstance.id = id;
+
     modalRef.result.then((document) => {
       this.findSchedulingByUserId()
     }).catch((error) => {

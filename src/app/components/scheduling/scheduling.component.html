@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-end me-3">
-    <a style="margin-top: 24px;" (click)="openModal()" class="btn btn-success">Nova consulta</a>
+    <a style="margin-top: 24px;" (click)="openModal(null)" class="btn btn-success">Nova consulta</a>
 </div>
 
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
@@ -14,8 +14,8 @@
     </div>
 </div>
 
-<div class="row col-12 m-3">
-    <div *ngFor="let appointment of appointments" class=" col-sm-4 col-md-4 col-xl-2 mt-5 mb-sm-0  d-flex">
+<div class="row m-3 me-0">
+    <div *ngFor="let appointment of appointments" class=" col-sm-4 col-md-4 col-xl-2 mt-5 me-0 mb-sm-0  d-flex">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title justify-content-center">Consulta Agendada</h5>
@@ -25,7 +25,7 @@
 
                 <p class="d-flex justify-content-center">Data: {{ datePipe.transform(appointment.date, 'dd/MM/yyyy - HH:mm') }}</p>
                 <div class="d-flex">
-                    <a style="margin-right: 10px;" class="btn btn-success">Remarcar</a>
+                    <a style="margin-right: 10px;" class="btn btn-success" (click)="openModal(appointment.id)">Remarcar</a>
                     <a style="margin: auto;" class="btn btn-danger" (click)="cancel(appointment.id)">Cancelar</a>
                 </div>
             </div>

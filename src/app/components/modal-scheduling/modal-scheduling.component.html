@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="col-5 ">
-                            <label for="time" class="mb-1 mt-3 col-6">Horario*</label>
+                            <label for="time" class="mb-1 mt-3 col-6">Horário*</label>
                             <input [attr.disabled]="specialityIsSelected ? '' : null" formControlName="time"
                                 class="form-control" type="time" name="time" id="time">
                             <small class="form-text text-danger "
@@ -62,7 +62,7 @@
                 <div class="d-flex justify-content-end mt-3">
                     <button type="submit" class="btn btn-secondary me-4"
                         (click)="activeModal.dismiss('Cross click')">Fechar</button>
-                    <button type="submit" class="btn btn-primary" (click)="register()">Agendar</button>
+                    <button type="submit" class="btn btn-primary" (click)="save()">Agendar</button>
                 </div>
 
             </form>
