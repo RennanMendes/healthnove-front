@@ -13,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SchedulingComponent } from './components/scheduling/scheduling.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalSchedulingComponent } from './components/modal-scheduling/modal-scheduling.component';
-
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +30,8 @@ import { ModalSchedulingComponent } from './components/modal-scheduling/modal-sc
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    CollapseModule.forRoot(),
+    FormsModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
