@@ -74,15 +74,30 @@ export class ModalSchedulingComponent implements OnInit {
         userId: localStorage.getItem('id')
       }
 
-      this.schedulingService.register(appointmentRequestDto).subscribe(
-        (resp: any) => {
-          this.alertSuccess("Usuário cadastrado com sucesso!");
-          this.activeModal.close();
-        },
-        (error) => {
-          this.alertError(error.error);
-        }
-      );
+      if (this.id !== null) {
+        this.schedulingService.delete(this.id).subscribe(data => {
+          this.schedulingService.register(appointmentRequestDto).subscribe(
+            (resp: any) => {
+              this.alertSuccess("Consulta agendada com sucesso!");
+              this.activeModal.close();
+            },
+            (error) => {
+              this.alertError(error.error);
+            }
+          );
+        });
+      } else {
+        this.schedulingService.register(appointmentRequestDto).subscribe(
+          (resp: any) => {
+            this.alertSuccess("Consulta agendada sucesso!");
+            this.activeModal.close();
+          },
+          (error) => {
+            this.alertError(error.error);
+          }
+        );
+      }
+
 
     }
   }
@@ -90,6 +105,8 @@ export class ModalSchedulingComponent implements OnInit {
   findSchedulingById() {
     this.schedulingService.findSchedulingById(this.id).subscribe(data => {
       let date = new Date(data.date);
+      console.log(date);
+      
 
       this.appointment = {
         doctor: data.doctorDto.id,
