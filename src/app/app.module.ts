@@ -14,6 +14,7 @@ import { SchedulingComponent } from './components/scheduling/scheduling.componen
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalSchedulingComponent } from './components/modal-scheduling/modal-scheduling.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     LoginComponent,
     SignUpComponent,
     SchedulingComponent,
-    ModalSchedulingComponent
+    ModalSchedulingComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row d-flex align-items-center">
+        <div class="col-md-12 ">
+            <div class="row d-flex justify-content-center">
+                <form [formGroup]="form" class="col-sm-6 shadow-lg cardLogin p-3 mb-4 bg-body rounded cardLogin">
+                    <h1 class="text-center m-3">Editar perfil</h1>
+                    <div class="form-group">
+                        <label for="firstName" class="mb-1 mt-3">Nome*</label>
+                        <input formControlName="firstName" class="form-control" type="text" name="firstName" id="firstName"
+                            placeholder="Digite seu nome">
+                        <small class="form-text text-danger "
+                            *ngIf="!form.get('firstName')?.valid && (form.get('firstName')?.dirty || form.get('firstName')?.touched)">Campo
+                            obrigatório!</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName" class="mb-1 mt-3">Sobre nome*</label>
+                        <input formControlName="lastName" class="form-control" type="text" name="lastName" id="lastName"
+                            placeholder="Digite seu sobre nome">
+                        <small class="form-text text-danger "
+                            *ngIf="!form.get('lastName')?.valid && (form.get('lastName')?.dirty || form.get('lastName')?.touched)">Campo
+                            obrigatório!</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="mb-1 mt-3">Telefone*</label>
+                        <input formControlName="phone" class="form-control" type="text" name="phone" id="phone"
+                            placeholder="Digite seu telefone">
+                        <small class="form-text text-danger "
+                            *ngIf="!form.get('phone')?.valid && (form.get('phone')?.dirty || form.get('phone')?.touched)">Campo
+                            obrigatório!</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="mb-1 mt-3">E-mail*</label>
+                        <input formControlName="email" class="form-control" type="text" name="email" id="email" placeholder="Digite seu e-mail">
+                        <small class="form-text text-danger "
+                            *ngIf="!form.get('email')?.valid && (form.get('email')?.dirty || form.get('email')?.touched)">Campo
+                            obrigatório!</small>
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-3">
+                        <button type="submit" class="btn btn-danger me-4" (click)='cancel()'>Cancelar</button>
+                        <button type="submit" class="btn btn-success" (click)="save()" >Atualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
