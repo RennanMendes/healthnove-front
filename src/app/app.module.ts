@@ -15,6 +15,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalSchedulingComponent } from './components/modal-scheduling/modal-scheduling.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,7 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
     ReactiveFormsModule,
     CollapseModule.forRoot(),
     FormsModule,
+    FontAwesomeModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

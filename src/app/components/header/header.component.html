@@ -19,16 +19,24 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul *ngIf="isLoggedIn" class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
                     <li class="nav-item p-3">
-                        <a class="nav-link active m-0 text-white fs-16" href="/scheduling">Agendamento</a>
+                        <a class="nav-link active m-0 text-white fs-16" href="/scheduling">
+                            <fa-icon [icon]="faBook"></fa-icon> Agendamento
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item p-3">
+                        <a class="nav-link m-0 text-white fs-16" href="#">
+                            <fa-icon [icon]="faUser"></fa-icon> Sobre nós
+                        </a>
+                    </li> -->
+                    <li class="nav-item p-3">
+                        <a class="nav-link m-0 text-white fs-16" href="/edit">
+                            <fa-icon [icon]="faUser"></fa-icon> Configurações
+                        </a>
                     </li>
                     <li class="nav-item p-3">
-                        <a class="nav-link m-0 text-white fs-16" href="#">Sobre nós</a>
-                    </li>
-                    <li class="nav-item p-3">
-                        <a class="nav-link m-0 text-white fs-16" href="/edit">Configurações</a>
-                    </li>
-                    <li class="nav-item p-3">
-                        <a class="nav-link m-0 text-white fs-16" href="/login" (click)="logout()">Sair</a>
+                        <a class="nav-link m-0 text-white fs-16" href="/login" (click)="logout()">
+                            <fa-icon [icon]="faRightFromBracket"></fa-icon> Sair
+                        </a>
                     </li>
                 </ul>
             </div>
