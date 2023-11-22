@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { SchedulingService } from 'src/app/core/service/scheduling.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
+import { UserService } from 'src/app/core/service/user.service';
+import { Router } from '@angular/router';
 
 interface Appointment {
   doctor: string;
@@ -27,8 +29,10 @@ export class ModalSchedulingComponent implements OnInit {
   appointment: Appointment;
 
   constructor(
+    private router: Router,
     public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
+    private userService: UserService,
     private schedulingService: SchedulingService
   ) {
     this.appointment = {
@@ -50,6 +54,8 @@ export class ModalSchedulingComponent implements OnInit {
       date: new FormControl(this.appointment.date, Validators.required),
       time: new FormControl(this.appointment.time, Validators.required)
     });
+
+    this.tokenIsvalid()
   }
 
   findBySpeciality(speciality: string) {
@@ -105,8 +111,6 @@ export class ModalSchedulingComponent implements OnInit {
   findSchedulingById() {
     this.schedulingService.findSchedulingById(this.id).subscribe(data => {
       let date = new Date(data.date);
-      console.log(date);
-      
 
       this.appointment = {
         doctor: data.doctorDto.id,
@@ -138,6 +142,27 @@ export class ModalSchedulingComponent implements OnInit {
       confirmButtonText: 'OK',
       showConfirmButton: false,
     });
+  }
+
+  tokenIsvalid() {
+    const token = localStorage.getItem('token') ?? '';
+
+    const currentTime = Date.now() / 1000;
+    const decodedToken = this.userService.decodeToken(token);
+
+    if (decodedToken.exp < currentTime) {
+      localStorage.clear();
+      Swal.fire({
+        title: 'Erro',
+        text: "Seu token expirou, faça o login novamente!",
+        icon: 'error',
+        confirmButtonColor: '#d33',
+        confirmButtonText: 'OK',
+        showConfirmButton: false,
+      });
+      this.activeModal.close();
+      this.router.navigate(['/login'])
+    }
   }
 
 }

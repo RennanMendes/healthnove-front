@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   password: string = '';
   loginDto: LoginDto
   userInvalid: boolean = false
+  isLoggedIn: boolean = false
 
   constructor(
     private router: Router,
@@ -31,6 +32,11 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    if (this.userIsLoggedIn()) {
+      this.router.navigate(['/scheduling'])
+    }
+
     this.loginForm = this.formBuilder.group({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required)
@@ -52,11 +58,16 @@ export class LoginComponent implements OnInit {
           if (err.status == 403) {
             this.userInvalid = true
           } else {
-            console.log('Problema na autenticação', err)
+            console.log(err)
           }
         },
       })
     }
   }
+
+  userIsLoggedIn() {
+    return !!localStorage.getItem('token');
+  }
+
 
 }

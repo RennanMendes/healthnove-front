@@ -5,6 +5,7 @@ import { SchedulingService } from 'src/app/core/service/scheduling.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 import { ModalSchedulingComponent } from '../modal-scheduling/modal-scheduling.component';
+import { UserService } from 'src/app/core/service/user.service';
 
 @Component({
   selector: 'app-scheduling',
@@ -20,11 +21,13 @@ export class SchedulingComponent implements OnInit {
     public datePipe: DatePipe,
     private modalService: NgbModal,
     private schedulingService: SchedulingService,
+    private userService: UserService,
     private cdRef: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
     this.findSchedulingByUserId()
+    this.tokenIsvalid();
   }
 
   findSchedulingByUserId() {
@@ -85,6 +88,19 @@ export class SchedulingComponent implements OnInit {
       confirmButtonText: 'OK',
       showConfirmButton: false,
     });
+  }
+
+  tokenIsvalid() {
+    const token = localStorage.getItem('token') ?? '';
+
+    const currentTime = Date.now() / 1000;
+    const decodedToken = this.userService.decodeToken(token);
+
+    if (decodedToken.exp < currentTime) {
+      localStorage.clear();
+      this.alertError("Seu token expirou, faça o login novamente!")
+      this.router.navigate(['/login'])
+    }
   }
 
 }

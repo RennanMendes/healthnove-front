@@ -36,6 +36,7 @@ export class UserService {
       map(response => {
         try {
           const token = this.decodeToken(response.tokenJWT);
+
           localStorage.setItem('token', response.tokenJWT);
           localStorage.setItem('id', token.id);
           this.loggedIn.next(true);
