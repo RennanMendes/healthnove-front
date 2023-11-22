@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { UserRequestDto } from '../../core/types/User';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/core/service/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sign-up',
@@ -46,27 +47,25 @@ export class SignUpComponent implements OnInit {
       this.userRequest = this.form.value;
 
       if (this.userRequest.password != this.form.get('confirmPassword')?.value) {
-        alert('A senhas devem ser iguais!');
+        this.alertError('A senhas devem ser iguais!');
       } else {
         this.userService.signUp(this.userRequest).subscribe(
           (resp: any) => {
-            alert("Usuário cadastrado com sucesso!");
+            this.alertSuccess("Usuário cadastrado com sucesso!");
             this.router.navigate(['/login']);
           },
           (error) => {
             if (error.error && error.error.length > 0) {
               const firstError = error.error[0];
-              console.error('Erro ao cadastrar usuário:', firstError.message);
-              alert('Erro ao cadastrar usuário: ' + firstError.message);
+              this.alertError('Erro ao cadastrar usuário: ' + firstError.message);
             } else {
-              console.error('Erro ao cadastrar usuário:', error.message);
-              alert('Erro ao cadastrar usuário: ' + error.message);
+              this.alertError('Erro ao cadastrar usuário: ' + error.message);
             }
           }
         );
       }
     } else {
-      alert('Preencha todos os campos obrigatorios!');
+      this.alertError('Preencha todos os campos obrigatorios!');
     }
   }
 
@@ -76,6 +75,25 @@ export class SignUpComponent implements OnInit {
 
   confirmPassword(event: any) {
     this.password = event.target.value
+  }
+
+  alertSuccess(message: string) {
+    Swal.fire({
+      title: `<h5 style="color:green">${message}</h5>`,
+      icon: 'success',
+      confirmButtonText: 'OK',
+      showConfirmButton: false,
+    });
+  }
+
+  alertError(message: string) {
+    Swal.fire({
+      title: `<h5>${message}</h5>`,
+      icon: 'error',
+      confirmButtonColor: '#d33',
+      confirmButtonText: 'OK',
+      showConfirmButton: false,
+    });
   }
 
 }

@@ -61,6 +61,7 @@ export class ModalSchedulingComponent implements OnInit {
   findBySpeciality(speciality: string) {
     this.schedulingService.findByDoctorSpeciality(speciality).subscribe(data => {
       if (data.content.length <= 0) {
+        this.specialityIsSelected = true
         this.alertError("Nenhum médico disponivel nesta especialidade!")
       } else {
         this.specialityIsSelected = false
