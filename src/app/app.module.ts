@@ -16,6 +16,9 @@ import { ModalSchedulingComponent } from './components/modal-scheduling/modal-sc
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+
+export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
     CollapseModule.forRoot(),
     FormsModule,
+    NgxMaskModule.forRoot(),
     FontAwesomeModule
   ],
   providers: [DatePipe],

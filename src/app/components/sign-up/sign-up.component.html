@@ -25,7 +25,8 @@
 
                     <div class="form-group">
                         <label for="cpf" class="mb-1 mt-3">CPF*</label>
-                        <input formControlName="cpf" class="form-control" type="text" name="cpf" id="cpf" placeholder="Digite seu cpf">
+                        <input formControlName="cpf" class="form-control" type="text" mask="000.000.000-00" name="cpf"
+                            id="cpf" placeholder="Digite seu cpf">
                         <small class="form-text text-danger "
                             *ngIf="!form.get('cpf')?.valid && (form.get('cpf')?.dirty || form.get('cpf')?.touched)">Campo
                             obrigatório!</small>
@@ -33,8 +34,8 @@
 
                     <div class="form-group">
                         <label for="phone" class="mb-1 mt-3">Telefone*</label>
-                        <input formControlName="phone" class="form-control" type="text" name="phone" id="phone"
-                            placeholder="Digite seu telefone">
+                        <input formControlName="phone" mask="(00) 00000-0000" class="form-control" type="text"
+                            name="phone" id="phone" placeholder="Digite seu telefone">
                         <small class="form-text text-danger "
                             *ngIf="!form.get('phone')?.valid && (form.get('phone')?.dirty || form.get('phone')?.touched)">Campo
                             obrigatório!</small>
@@ -42,7 +43,8 @@
 
                     <div class="form-group">
                         <label for="birthDate" class="mb-1 mt-3">Nascimento*</label>
-                        <input formControlName="birthDate" class="form-control" type="date" name="birthDate" id="birthDate">
+                        <input formControlName="birthDate" class="form-control" type="date" name="birthDate"
+                            id="birthDate">
                         <small class="form-text text-danger "
                             *ngIf="!form.get('birthDate')?.valid && (form.get('birthDate')?.dirty || form.get('birthDate')?.touched)">Campo
                             obrigatório!</small>
@@ -57,7 +59,8 @@
 
                     <div class="form-group">
                         <label for="email" class="mb-1 mt-3">E-mail*</label>
-                        <input formControlName="email" class="form-control" type="text" name="email" id="email" placeholder="Digite seu e-mail">
+                        <input formControlName="email" class="form-control" type="text" name="email" id="email"
+                            placeholder="Digite seu e-mail">
                         <small class="form-text text-danger "
                             *ngIf="!form.get('email')?.valid && (form.get('email')?.dirty || form.get('email')?.touched)">Campo
                             obrigatório!</small>
@@ -65,8 +68,8 @@
 
                     <div class="form-group">
                         <label for="password" class="mb-1 mt-3">Senha*</label>
-                        <input formControlName="password" (input)="confirmPassword($event)" class="form-control" type="password" name="password"
-                            id="password" placeholder="Digite sua senha">
+                        <input formControlName="password" (input)="confirmPassword($event)" class="form-control"
+                            type="password" name="password" id="password" placeholder="Digite sua senha">
                         <small class="form-text text-danger "
                             *ngIf="!form.get('password')?.valid && (form.get('password')?.dirty || form.get('password')?.touched)">Campo
                             obrigatório!</small>
@@ -74,8 +77,8 @@
 
                     <div class="form-group">
                         <label for="confirmPassword" class="mb-1 mt-3">Confirmar Senha*</label>
-                        <input formControlName="confirmPassword" class="form-control" type="password" name="confirmPassword" id="confirmPassword"
-                            placeholder="Digite sua senha">
+                        <input formControlName="confirmPassword" class="form-control" type="password"
+                            name="confirmPassword" id="confirmPassword" placeholder="Digite sua senha">
                         <small class="form-text text-danger "
                             *ngIf="!form.get('confirmPassword')?.valid && (form.get('confirmPassword')?.dirty || form.get('confirmPassword')?.touched)">Campo
                             obrigatório!</small>
