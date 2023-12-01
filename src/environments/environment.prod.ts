@@ -1,4 +1,4 @@
 export const environment = {
-  baseUrl: 'http://localhost:8080',
+  baseUrl: 'https://api-healthnove.onrender.com',
   production: true
 };
