@@ -1,27 +1,50 @@
-# SchedulingHealthNove
+<h1 align="center">HealthNove</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.9.
+##  Sobre
 
-## Development server
+Este projeto tem como objetivo criar um sistema de agendamento  a clínica HealthNove, seguindo as normas estabelecidas pela clínica. 
+O sistema permitirá que os pacientes agendem consultas com médicos de diversas especialidades de forma eficiente e conveniente.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Regras de negócio
 
-## Code scaffolding
+ - Limitação de Consultas: Cada paciente poderá agendar apenas uma consulta por dia.
+ - As consultas devem ser agendadas com pelo menos 1 hora de antecedência.
+ - Horário de Funcionamento: A clínica opera de segunda a sábado, das 7h às 19h.
+ - Duração da Consulta: Cada consulta possui uma duração padrão de 1 hora
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Especialidades Médicas
 
-## Build
+O sistema permitirá que os pacientes escolham entre as seguintes especialidades médicas para agendamento:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+ - Cardiologia
+ - Clínica Médica
+ - Dermatologia
+ - Gastroenterologia
+ - Ginecologia
+ - Pediatria
+ - Pneumologia
 
-## Running unit tests
+## Tecnologias utilizadas
+| <img src="https://cdn.simpleicons.org/html5/#E34F26" alt="HTML5 Icon" width="40" height="40" /> | <img src="https://cdn.simpleicons.org/css3/#1572B6" alt="CSS3 Icon" width="40" height="40" /> | <img src="https://cdn.simpleicons.org/typescript/#3178C6" alt="TypeScript Icon" width="40" height="40" /> | <img src="https://cdn.simpleicons.org/angular/#DD1100" alt="Angular Icon" width="40" height="40" /> |
+| :--: | :--: | :--: | :--: |
+| HTML5 | CSS3 | TypeScript | Angular |
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+</br>
 
-## Running end-to-end tests
+##  Instalação
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Antes de iniciar a instalação do aplicativo Angular, assegure-se de ter as seguintes ferramentas devidamente instaladas em sua máquina:
 
-## Further help
+- Node.js
+- npm (Node Package Manager)
+- Angular CLI (Command Line Interface)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Siga as etapas abaixo para instalar e executar o projeto:
+
+1. Clone o repositório: `git clone git@github.com:projetosUninove/healthNove-backend.git`
+
+2. Instale as Dependências: `npm install`
+
+3. Inicie o Servidor de Desenvolvimento: `ng serve`
+
+O aplicativo estará disponível em http://localhost:4200/.
