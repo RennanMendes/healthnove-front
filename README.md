@@ -48,3 +48,5 @@ Siga as etapas abaixo para instalar e executar o projeto:
 3. Inicie o Servidor de Desenvolvimento: `ng serve`
 
 O aplicativo estará disponível em http://localhost:4200/.
+
+![alt](./src/assets/img/Apresentação%20healthnove.gif)
